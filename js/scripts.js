@@ -1,3 +1,4 @@
+// Business Logic
 function AddressBook() {
     this.contacts = [],
     this.currentId = 0
@@ -46,8 +47,17 @@ Contact.prototype.fullName = function() {
     return this.firstName + this.lastName;
 }
 
+// User Interface logic
 let addressBook = new AddressBook();
-let contact = new Contact("Ada", "Lovelace", "503-555-0100");
-let contact2 = new Contact("Grace", "Hopper", "503-555-0199");
-addressBook.addContact(contact);
-addressBook.addContact(contact2);
+
+$(document).ready(function() {
+    $("form#new-contact").submit(function(event) {
+        event.preventDefault();
+        let inputtedFirstName = $("input#new-first-name").val();
+        let inputtedLastName = $("input#new-last-name").val();
+        let inputtedPhoneNumber = $("input#new-phone-number").val();
+        const newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+        addressBook.addContact(newContact);
+        console.log(addressBook.contacts);
+    });
+});

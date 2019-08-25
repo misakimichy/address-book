@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src='js/jquery-3.4.1.js'></script>
+    <script src='js/scripts.js'></script>
     <title>Address Book</title>
 </head>
 <body>
-    <header>
-        <h1>Address Book</h1>
-    </header>
-    <section id="address"></section>
+    <h1>Address Book</h1>
+    <h2>Add a contact:</h2>
+    <form id='new-contact'>
+        <label for="new-first-name">First Name</label>
+        <input type="text" id='new-first-name'>
+        <label for="new-last-name">Last Name</label>
+        <input type="text" id="new-last-name">
+        <label for="new-phone-number">Phone Number</label>
+        <input type="text" id="new-phone-number">
+        <button type='submit'>Add</button>
+    </form>
 
-    <script src='js/scripts.js'></script>
+    <h2>Contacts:</h2>
+    <ul id="contacts">
+
+    </ul>
+
+    <div id="show-contact">
+        <p>First Name: <span class="first-name"></span></p>
+        <p>Last Name: <span class="last-name"></span></p>
+        <p>Phone Number: <span class="phone-number"></span></p>
+        <div class="" id="buttons"></div>
+    </div>
 </body>
 </html>
