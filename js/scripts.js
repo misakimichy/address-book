@@ -61,8 +61,19 @@ const displayContactDetails = addressBookToDisplay => {
 
 const attachContactListeners = () => {
     $("ul#contacts").on("click", "li", () => {
-        console.log(`The id of this <li> is ${this.id}.`);
+        showContact(this.id);
     })
+}
+
+const showContact = contactId => {
+    const contact = addressBook.findContact(contactId);
+    $("#show-contact").show();
+    $(".first-name").html(contact.firstName);
+    $(".last-name").html(contact.lastName);
+    $("phone-number").html(contact.phoneNumber);
+    let buttons = ("#buttons");
+    buttons.empty();
+    buttons.append(`<button class="deleteButton" id="${contact.id}">Delete</button>`);
 }
 
 $(document).ready(function() {
