@@ -57,13 +57,19 @@ const displayContactDetails = addressBookToDisplay => {
         htmlForContactInfo += `<li id="${contact.id}">${contact.firstName} ${contact.lastName}</li>`;
     });
     contactsList.html(htmlForContactInfo);
-}
+};
 
 const attachContactListeners = () => {
     $("ul#contacts").on("click", "li", () => {
         showContact(this.id);
-    })
-}
+    });
+    // When a user click the button, the contact will be deleted.
+    $("#buttons").on("click", ".deleteButton", () => {
+        addressBook.deleteContact(this.id);
+        $("show-contact").hide();
+        displayContactDetails(addressBook);
+    });
+};
 
 const showContact = contactId => {
     const contact = addressBook.findContact(contactId);
@@ -74,7 +80,7 @@ const showContact = contactId => {
     let buttons = ("#buttons");
     buttons.empty();
     buttons.append(`<button class="deleteButton" id="${contact.id}">Delete</button>`);
-}
+};
 
 $(document).ready(function() {
     attachContactListeners();
