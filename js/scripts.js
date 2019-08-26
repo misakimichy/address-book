@@ -50,7 +50,7 @@ Contact.prototype.fullName = function() {
 // User Interface logic
 let addressBook = new AddressBook();
 
-const displayContactDetails = addressBookToDisplay => {
+function displayContactDetails(addressBookToDisplay) {
     let contactsList = $("ul#contacts");
     let htmlForContactInfo = '';
     addressBookToDisplay.contacts.forEach(contact => {
@@ -59,27 +59,27 @@ const displayContactDetails = addressBookToDisplay => {
     contactsList.html(htmlForContactInfo);
 };
 
-const attachContactListeners = () => {
-    $("ul#contacts").on("click", "li", () => {
+function showContact(contactId) {
+    var contact = addressBook.findContact(contactId);
+    $("#show-contact").show();
+    $(".first-name").html(contact.firstName);
+    $(".last-name").html(contact.lastName);
+    $(".phone-number").html(contact.phoneNumber);
+    var buttons = $("#buttons");
+    buttons.empty();
+    buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
+  }
+
+function attachContactListeners() {
+    $("ul#contacts").on("click", "li", function() {
         showContact(this.id);
     });
     // When a user click the button, the contact will be deleted.
-    $("#buttons").on("click", ".deleteButton", () => {
+    $("#buttons").on("click", ".deleteButton", function() {
         addressBook.deleteContact(this.id);
         $("show-contact").hide();
         displayContactDetails(addressBook);
     });
-};
-
-const showContact = contactId => {
-    const contact = addressBook.findContact(contactId);
-    $("#show-contact").show();
-    $(".first-name").html(contact.firstName);
-    $(".last-name").html(contact.lastName);
-    $("phone-number").html(contact.phoneNumber);
-    let buttons = ("#buttons");
-    buttons.empty();
-    buttons.append(`<button class="deleteButton" id="${contact.id}">Delete</button>`);
 };
 
 $(document).ready(function() {
@@ -89,6 +89,12 @@ $(document).ready(function() {
         let inputtedFirstName = $("input#new-first-name").val();
         let inputtedLastName = $("input#new-last-name").val();
         let inputtedPhoneNumber = $("input#new-phone-number").val();
+
+        //Empty out the form field after submission:
+        $("input#new-first-name").val('');
+        $("input#new-last-name").val('');
+        $("input#new-phone-number").val('');
+
         const newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
         addressBook.addContact(newContact);
         displayContactDetails(addressBook);
