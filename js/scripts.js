@@ -51,10 +51,12 @@ AddressBook.prototype.deleteContact = function(id) {
 }
 
 // Business Logic for Contacts
-function Contact(firstName, lastName, phoneNumber) {
+function Contact(firstName, lastName, phoneNumber, emailAddress, physicalAddress) {
   this.firstName = firstName,
   this.lastName = lastName,
-  this.phoneNumber = phoneNumber
+  this.phoneNumber = phoneNumber,
+  this.emailAddress = emailAddress,
+  this.physicalAddress = physicalAddress
 }
 
 
@@ -81,7 +83,9 @@ function clearInput() {
   $("input#new-first-name").val('');
   $("input#new-last-name").val('');
   $("input#new-phone-number").val('');
-}
+  $("input#new-email-address").val('');
+  $("input#new-physical-address").val('');
+};
 
 //Empty out the form field after submission:
 function showContact(contactId) {
@@ -90,10 +94,12 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
+  $(".email-address").html(contact.emailAddress);
+  $(".physical-address").html(contact.physicalAddress);
   const buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
-  }
+};
 
 function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() {
@@ -111,12 +117,14 @@ $(document).ready(function() {
   attachContactListeners();
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    // clearInput();
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
+    const inputtedEmailAddress = $('input#new-email-address').val();
+    const inputtedPhysicalAddress = $("input#new-physical-address").val();
+
     clearInput();
-    const newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    const newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress, inputtedPhysicalAddress);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   });
