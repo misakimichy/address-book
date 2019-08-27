@@ -13,7 +13,7 @@ An address book application using constructors and prototypes.
 
 ## Setup/Installation Requirements
 
-* Clone this repo:
+* Clone this repo: https://github.com/misakimichy/address-book.git
 * Navigate to the top level of the cloned directory.
 * Then, open your preferred web browser.
 
