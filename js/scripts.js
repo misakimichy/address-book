@@ -109,8 +109,6 @@ function showContact(contactId) {
   } else {
     $(".physical-address").html(contact.physicalAddress);
   }
-
-
   const buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
