@@ -1,3 +1,8 @@
 #show-contact {
     display: none;
 }
+
+.btn {
+  display: block;
+  margin: 10px auto;
+}
