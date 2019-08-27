@@ -1,7 +1,7 @@
 # Address Book
 
-#### _Given a task to build a Address Book Webpage, 8/25/2019_
-#### _**08/25/19: Misaki Koonce**_
+#### _Given a task to build a Address Book Webpage_
+#### _**08/27/19: Misaki Koonce**_
 
 ## Description
 Build a Address Book (using HTML, CSS and JavaScript)
@@ -13,7 +13,7 @@ An address book application using constructors and prototypes.
 
 ## Setup/Installation Requirements
 
-* Clone this repo
+* Clone this repo:
 * Navigate to the top level of the cloned directory.
 * Then, open your preferred web browser.
 
